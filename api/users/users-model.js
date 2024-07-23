@@ -1,7 +1,7 @@
 /**
   resolves to an ARRAY with all users, each user having { user_id, username }
  */
-const db = require('../data/db-config');
+const db = require('../../data/db-config');
 
 function find() {
   return db('users').select('user_id', 'username');
