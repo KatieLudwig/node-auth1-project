@@ -42,7 +42,7 @@ router.post('/register', checkUsernameFree, checkPasswordLength, async (req, res
   } catch (err) {
     next(err);
   }
-})
+});
 
 /**
   2 [POST] /api/auth/login { "username": "sue", "password": "1234" }
@@ -89,7 +89,7 @@ router.post('/login', checkUsernameExists, async (req, res, next) => {
   }
  */
 router.get('/logout', (req, res) => {
-  if (req.session) {
+  if (req.session && req.session.user) {
     req.session.destroy(err => {
       if (err) {
         res.status(500).json({ message: 'Failed to logout' });
